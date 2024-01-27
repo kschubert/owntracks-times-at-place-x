@@ -1,4 +1,5 @@
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
+import org.springframework.boot.gradle.tasks.bundling.BootJar
 
 plugins {
 	id("org.springframework.boot") version "3.1.5"
@@ -25,6 +26,13 @@ dependencies {
 	developmentOnly("org.springframework.boot:spring-boot-devtools")
 	runtimeOnly("org.mariadb.jdbc:mariadb-java-client")
 	testImplementation("org.springframework.boot:spring-boot-starter-test")
+}
+
+tasks.named<BootJar>("bootJar") {
+	dependsOn(":frontend:build")
+	bootInf {
+		from(project(":frontend").tasks.named("build")).into("/static")
+	}
 }
 
 tasks.withType<KotlinCompile> {
