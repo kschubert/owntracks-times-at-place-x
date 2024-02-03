@@ -16,6 +16,7 @@ repositories {
 
 dependencies {
     runtimeOnly("org.mariadb.jdbc:mariadb-java-client:3.3.2")
+    runtimeOnly("mysql:mysql-connector-java:8.0.33")
     testImplementation("org.jetbrains.kotlin:kotlin-test")
 }
 
