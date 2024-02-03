@@ -70,20 +70,6 @@ function App() {
     }
   }
 
-  function renderLocations(locations: PlaceLocation[]): ReactElement {
-    console.log(locations);
-    const locationsItems: ReactNode[] = locations.map((location) =>
-      <li key={location.time} >time: {format(new Date(location.time * 1000), "dd-MM HH:mm")}, latitude: {location.latitude}, longitude: {location.longitude}, atTarget: {sameLocation(location2Coords(location), coordinates, 0.5) ? 'yes' : 'no'}</li>
-    );
-    return (
-      <ul>{locationsItems}</ul>
-    )
-  }
-
-  function location2Coords(location: PlaceLocation): Coordinates {
-    return { latitude: location.latitude, longitude: location.longitude };
-  }
-
   function lastMonth(): number | (() => number) {
     return subMonths(startOfMonth(new Date()), 1).getTime();
   }
