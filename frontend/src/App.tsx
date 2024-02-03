@@ -1,7 +1,7 @@
 import DatePicker from 'react-datepicker';
-import { startOfMonth, subMonths, addMonths, differenceInDays, format } from 'date-fns';
+import { startOfMonth, subMonths, addMonths, differenceInDays } from 'date-fns';
 import Locations, { PlaceLocation } from './PlaceLocation';
-import React, { ReactElement, ReactNode, useEffect, useState } from 'react';
+import React, { ReactNode, useEffect, useState } from 'react';
 import 'react-datepicker/dist/react-datepicker.css';
 import svgStyles from './svg.module.css';
 import { Coordinates, coords2String, sameLocation, string2Coords, validCoords } from './geolocation';
