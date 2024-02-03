@@ -24,5 +24,5 @@ tasks.test {
 }
 
 tasks.named<JavaExec>("run") {
-    setArgsString("jdbc:mariadb://localhost:3306/test")
+    setArgsString("jdbc:mysql://localhost:3306/owntracks")
 }
