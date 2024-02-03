@@ -29,11 +29,19 @@ jobs:
     - uses: gradle/actions/setup-gradle@v3
     - run: ./gradlew testdata:run
     - run: ./gradlew backend:bootJar
+    - name: "Start application"
+      run: "java -jar backend/build/libs/backend-0.0.1-SNAPSHOT.jar &"
+      env:
+        SPRING_DATASOURCE_USERNAME: owntracks
+        SPRING_DATASOURCE_PASSWORD: owntracks
+    - name: "Wait for application startup"
+      run: |
+        for attempt in {1..20}; do sleep 1; if curl -o /dev/null -s http://localhost:8080/; then echo application is ready; break; fi, echo waiting ...; done
     - uses: actions/setup-node@v3
       with:
         node-version: 18
     - name: Install dependencies
-      run: npm ci
+      run: (cd e2e-tests; npm ci)
     - name: Install Playwright Browsers
       run: (cd e2e-tests; npx playwright install --with-deps)
     - name: Run Playwright tests
