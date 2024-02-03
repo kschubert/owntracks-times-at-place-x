@@ -36,7 +36,7 @@ jobs:
         SPRING_DATASOURCE_PASSWORD: owntracks
     - name: "Wait for application startup"
       run: |
-        for attempt in {1..20}; do sleep 1; if curl -o /dev/null -s http://localhost:8080/; then echo application is ready; break; fi, echo waiting ...; done
+        for attempt in {1..20}; do sleep 1; if curl -o /dev/null -s http://localhost:8080/; then echo application is ready; break; fi; echo waiting ...; done
     - uses: actions/setup-node@v3
       with:
         node-version: 18
