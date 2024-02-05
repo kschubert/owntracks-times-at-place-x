@@ -1,7 +1,7 @@
 import com.github.gradle.node.npm.task.NpxTask
 
 plugins {
-    id("com.github.node-gradle.node") version "5.0.0"
+    id("com.github.node-gradle.node") version "7.0.1"
 }
 
 tasks.register<NpxTask>("build") {
